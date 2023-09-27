@@ -1,0 +1,19 @@
+datasource db {
+    provider = "sqlserver"
+    url      = env("DATABASE_URL")
+}
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+model Department {
+    id          Int      @id @default(autoincrement())
+    displayName String   @db.NVarChar(50)
+    description String?  @db.NVarChar(200)
+    isDisabled  Boolean  @default(false)
+    createAt    DateTime @default(now())
+    updateAt    DateTime @updatedAt
+
+    @@map("departments")
+}
