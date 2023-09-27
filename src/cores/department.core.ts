@@ -31,4 +31,10 @@ export class DepartmentCore {
     ): Promise<Department | null> {
         return this.prisma.department.delete(params);
     }
+
+    public async updateAsync(
+        params: Prisma.DepartmentUpdateArgs,
+    ): Promise<Department | null> {
+        return this.prisma.department.update(params)
+    }
 }
